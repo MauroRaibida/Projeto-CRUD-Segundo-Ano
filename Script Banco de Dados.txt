@@ -1,0 +1,33 @@
+CREATE TABLE funcionario(codFuncionario SERIAL PRIMARY KEY,
+			 rgFuncionário VARCHAR(20) UNIQUE NOT NULL,
+			 cargo VARCHAR(20) NOT NULL,
+			 cpfFuncionario VARCHAR(20) UNIQUE NOT NULL,
+			 nomeFuncionário VARCHAR (50) NOT NULL,
+			 telefoneFuncionario VARCHAR(15),
+			 enderecoFuncionario VARCHAR(50),
+			 dataContratacao date default current_date);
+
+
+CREATE TABLE cliente (codCliente SERIAL PRIMARY KEY,
+		      nomeCliente VARCHAR(50) NOT NULL,
+		      enderecoCliente VARCHAR(50),
+		      cpfCliente VARCHAR(15) UNIQUE,
+		      telefoneCliente VARCHAR(20) NOT NULL);
+
+
+CREATE TABLE projeto (codProjeto SERIAL PRIMARY KEY,
+		      codFuncionario INT NOT NULL REFERENCES funcionario(codFuncionario) ON DELETE SET NULL ON UPDATE CASCADE,
+		      codCliente INT NOT NULL REFERENCES cliente(codCliente) ON DELETE SET NULL ON UPDATE CASCADE,
+		      dataEntrega DATE NOT NULL,
+		      descricaoProjeto TEXT NOT NULL);
+
+
+CREATE TABLE compromisso (codCompromisso SERIAL PRIMARY KEY,
+			  codCliente INT NOT NULL REFERENCES cliente(codCliente) ON DELETE SET NULL ON UPDATE CASCADE,
+			  codFuncionario INT NOT NULL REFERENCES funcionario(codFuncionario) ON DELETE SET NULL ON UPDATE CASCADE,
+			  dataCompromisso DATE DEFAULT CURRENT_DATE,
+			  horario VARCHAR (10) NOT NULL);
+
+
+CREATE TABLE projetoCompromisso(codCompromisso INT REFERENCES compromisso(codCompromisso) ON DELETE SET NULL ON UPDATE CASCADE,
+				codProjeto INT REFERENCES projeto(codProjeto) ON DELETE SET NULL ON UPDATE CASCADE);

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<MenuBar xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FXMLMenuBarPrincipalController">
+  <menus>
+    <Menu mnemonicParsing="false" text="Cadastro">
+      <items>
+        <MenuItem fx:id="menuItemCliente" mnemonicParsing="false" onAction="#menuItemClienteOnAction" text="Cliente" />
+            <MenuItem fx:id="menuItemFuncionario" mnemonicParsing="false" onAction="#menuItemFuncionarioOnAction" text="Funcionário" />
+      </items>
+    </Menu>
+    <Menu mnemonicParsing="false" text="Processos">
+      <items>
+        <MenuItem fx:id="menuItemCompromisso" mnemonicParsing="false" onAction="#menuItemCompromissoOnAction" text="Compromisso" />
+            <MenuItem fx:id="menuItemProjeto" mnemonicParsing="false" onAction="#menuItemProjetoOnAction" text="Projeto" />
+      </items>
+    </Menu>
+  </menus>
+</MenuBar>
